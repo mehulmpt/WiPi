@@ -15,4 +15,6 @@ Note: For future runs, do `python3 sock.py` from terminal (after navigating to W
 
 Use this android app to control your Raspberry: https://play.google.com/store/apps/details?id=com.wipi
 
+Tip: To stream youtube videos, open your YouTube app and share the video to WiPi (i.e. open video -> share this video -> select WiPi)
+
 Please let me know about any bugs you face. Feel free to contribute.
