@@ -28,6 +28,13 @@ echo "Installing/Updating pexpect python module\n";
 echo "----------------------------------------";
 sudo pip3 install pexpect;
 
+
+echo "----------------------------------------";
+echo "Installing notify-send";
+echo "----------------------------------------";
+
+sudo apt-get install libnotify-bin;
+
 echo "----------------------------------------";
 echo "Installed all dependencies.. Should work (probably :P).";
 
