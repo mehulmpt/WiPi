@@ -69,8 +69,7 @@ def main():
     try:
         s.bind((raspip, 3141))
         s.listen(1)
-        xxx =threading.Thread(target=sendNotifications, args=(raspip,))
-        xxx.start()
+        threading.Thread(target=sendNotifications, args=(raspip,)).start()
     except Exception as e:
         send("ERROR", "Failed to open socket. Are you connected to WiFi? (Restarting Script)")
         time.sleep(10)
@@ -96,13 +95,13 @@ def main():
         j = json.loads(dataX)[0]
 
         if(j['msg'] == 'omxcmd' and proc != None):
-            proc.sendline(str(j['p1'])) # sending the command to do
+            proc.sendline(str(j['p1']))
             time.sleep(0.4)
             proc.sendline(str(j['p1']))
 
         if(j['msg'] == 'omxyt' and proc2 != None):
             proc2.sendline(str(j['p1']))
-            time.sleep(0.4) # NO DO NOT TOUCH THIS BLOCK PLEASEEEEE
+            time.sleep(0.4)
             proc2.sendline(str(j['p1']))
 
         if(j['msg'] == 'startmediacontroller'):
