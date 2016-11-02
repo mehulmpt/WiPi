@@ -17,12 +17,12 @@ def send(head, message, icon="important"):
 
 def play():
     global omx
-    omx = omxpy(os.path.expanduser("~/Desktop/WiPi/Movies/"+name))
+    omx = omxpy(os.path.expanduser("~/Desktop/WiPi_content/Movies/"+name))
 
 def showdatatransfer():
     while True:
         if finished == True: break
-        q = "ls ~/Desktop/WiPi/Movies/ -s | grep '"+name+"' | awk -F ' ' '{print $1}'"
+        q = "ls ~/Desktop/WiPi_content/Movies/ -s | grep '"+name+"' | awk -F ' ' '{print $1}'"
         p = subprocess.Popen(q, stdout=subprocess.PIPE, shell=True)
         send("File Status", str(int((p.stdout.read()).decode('utf-8'))/1000) + 'MB Transferred')
         time.sleep(10)
@@ -38,14 +38,13 @@ def receiveMedia():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind((getip(), 3143))
-    path = os.path.expanduser('~/Desktop/WiPi')
+    path = os.path.expanduser('~/Desktop/WiPi_content')
 
     s.listen(1)
-    path = os.path.expanduser('~/Desktop/WiPi')
 
     if os.path.exists(path) == False:
         os.makedirs(path+'/Movies')
-    mediaPath = os.path.expanduser("~/Desktop/WiPi/Movies/"+name)
+    mediaPath = os.path.expanduser("~/Desktop/WiPi_content/Movies/"+name)
     if(os.path.isfile(mediaPath)):
         s.close()
         finished = True
